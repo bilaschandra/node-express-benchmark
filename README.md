@@ -22,6 +22,10 @@ Development utilities:
 
 ## Setup
 
+There is a (root directory) db.sql to create a table user in the DB
+https://github.com/bilaschandra/node-express-benchmark/blob/main/db.sql
+
+
 ```
 npm install
 ```
@@ -50,8 +54,30 @@ npm run dev
 docker-compose up
 ```
 
-There is a (root directory) db.sql to create a table user in the DB
-https://github.com/bilaschandra/node-express-benchmark/blob/main/db.sql
+## Benchmark testing
+```
+node-express-benchmark git:(main) ✗ node benchmarks/basic-get.js 1000 10
+Running 10s test @ http://localhost:5000
+1000 connections
+
+running [==============      ] 70%
+┌─────────┬────────┬────────┬─────────┬─────────┬───────────┬───────────┬─────────┐
+│ Stat    │ 2.5%   │ 50%    │ 97.5%   │ 99%     │ Avg       │ Stdev     │ Max     │
+├─────────┼────────┼────────┼─────────┼─────────┼───────────┼───────────┼─────────┤
+│ Latency │ 413 ms │ 596 ms │ 1153 ms │ 1213 ms │ 659.79 ms │ 205.56 ms │ 1533 ms │
+└─────────┴────────┴────────┴─────────┴─────────┴───────────┴───────────┴─────────┘
+┌───────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
+│ Stat      │ 1%      │ 2.5%    │ 50%     │ 97.5%   │ Avg     │ Stdev   │ Min     │
+├───────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+│ Req/Sec   │ 491     │ 491     │ 1637    │ 2021    │ 1428.58 │ 480.08  │ 491     │
+├───────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+│ Bytes/Sec │ 1.79 MB │ 1.79 MB │ 5.98 MB │ 7.39 MB │ 5.22 MB │ 1.75 MB │ 1.79 MB │
+└───────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
+
+Req/Bytes counts sampled once per second.
+
+10k requests in 7.13s, 36.5 MB read
+```
 
 
 Main repo or copied from - https://github.com/ipenywis/node-express-benchmark
