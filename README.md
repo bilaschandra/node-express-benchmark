@@ -38,8 +38,21 @@ npm run lint
 npm run test
 ```
 
-## Development
+## Without docker-compose
 
 ```
 npm run dev
 ```
+
+## With docker-compose
+
+```
+docker-compose up
+```
+
+There is a (root directory) db.sql to create a table user in the DB
+https://github.com/bilaschandra/node-express-benchmark/blob/main/db.sql
+
+
+Main repo or copied from - https://github.com/ipenywis/node-express-benchmark
+
